@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -69,10 +69,10 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 1024
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -93,9 +93,736 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Animated Lazer-Sheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1069
+        width: 128
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed6a37631246c144388bf13629ec66c2
+      internalID: -324278
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Animated Lazer-Sheet_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1037
+        width: 128
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2d8b111d01d2e204b92fe73c529df143
+      internalID: 1942436464
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Animated Lazer-Sheet_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1004
+        width: 128
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 08792e45cf393764588d4139fc567bb2
+      internalID: 1311986810
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Animated Lazer-Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 971
+        width: 128
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 17e295bd062cd0d46adfce9bd834ed23
+      internalID: 156210974
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Animated Lazer-Sheet_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 938
+        width: 128
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 075ce7deda83ca94b9edf63d49e8ef65
+      internalID: -1492806290
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Animated Lazer-Sheet_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 905
+        width: 128
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 86f5feffcdaae8a4fab82d7df78ca784
+      internalID: 1165175504
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Animated Lazer-Sheet_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 873
+        width: 128
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3a77d415cda15544b2542a90fd04b86
+      internalID: -1799625341
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Animated Lazer-Sheet_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 841
+        width: 128
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81f77d8e98a9e524ca26cd3e984cc542
+      internalID: -460292460
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Animated Lazer-Sheet_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 809
+        width: 128
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 45d8a75be5719ca48bd5e8b50a76cc1e
+      internalID: 2109429826
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Animated Lazer-Sheet_9
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 777
+        width: 128
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 47c6679903129fc48b6a8e6d29d98c5b
+      internalID: 744400350
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Animated Lazer-Sheet_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 745
+        width: 128
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c79141805dca9aa4cade319f81fd9786
+      internalID: -283421875
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Animated Lazer-Sheet_11
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 712
+        width: 128
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 651f6e9151644fd4ca66a53e7e67a01b
+      internalID: -2053725984
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Animated Lazer-Sheet_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 681
+        width: 128
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f5bca6c64438947449119cd7b5d66cd4
+      internalID: 1695515624
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Animated Lazer-Sheet_13
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 649
+        width: 128
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c5bf4571c184df4aa822f5bfae2522c
+      internalID: 156770526
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Animated Lazer-Sheet_14
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 617
+        width: 128
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f0d4062d1e5bd644a89d2b3fdc253e73
+      internalID: 1433097021
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Animated Lazer-Sheet_15
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 585
+        width: 128
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7569c563c8e2f85458219aea9cb4f04f
+      internalID: -1794032401
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Animated Lazer-Sheet_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 553
+        width: 128
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f6441becbd718e8418a91ce2956aa7b0
+      internalID: -1500551780
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Animated Lazer-Sheet_17
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 521
+        width: 128
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c59e297f9f7d14a42b675a65be210074
+      internalID: 1208231020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Animated Lazer-Sheet_18
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 489
+        width: 128
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c7441594bec5a74b96ceb98f730c01c
+      internalID: 492707267
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Animated Lazer-Sheet_19
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 456
+        width: 128
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3377a55177bc1ab409c4f8a8d0435af3
+      internalID: 1977021117
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Animated Lazer-Sheet_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 424
+        width: 128
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf16dfb2cdb12b941b40c79685f10470
+      internalID: 1965787238
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Animated Lazer-Sheet_21
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 393
+        width: 128
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a79ae35c2d692146a4ed9edbb5572a4
+      internalID: 185422648
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Animated Lazer-Sheet_22
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 361
+        width: 128
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b94a8aa9d4e6b4e4d8d540dafa0ecbae
+      internalID: -1016684780
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Animated Lazer-Sheet_23
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 329
+        width: 128
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 01c721862b4095948be9c820382b4959
+      internalID: 157092313
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Animated Lazer-Sheet_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 297
+        width: 128
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0eee7aa13d59acd49be2712c2269fed4
+      internalID: -310627212
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Animated Lazer-Sheet_25
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 265
+        width: 128
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ea21d2bd9f3db74bb1c81cd28e4bd76
+      internalID: -787300748
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Animated Lazer-Sheet_26
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 233
+        width: 128
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e5a48894a672b8439b7772d4ac20e6f
+      internalID: -1290064694
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Animated Lazer-Sheet_27
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 201
+        width: 128
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c92bb21ac2e99a4b8bef309a6155c2e
+      internalID: 320956313
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Animated Lazer-Sheet_28
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 168
+        width: 128
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b46b6f963991df4fb2db84ee1f0156a
+      internalID: 486222326
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Animated Lazer-Sheet_29
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 137
+        width: 128
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3302dc254aec8be449f8af48e0d7ca58
+      internalID: 1785565353
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Animated Lazer-Sheet_30
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 106
+        width: 128
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d68deed75ab470243ba0574e51f715bc
+      internalID: -1218069930
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Animated Lazer-Sheet_31
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 75
+        width: 128
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5fc1ad3b3fdeb5242aad2a5a29a46115
+      internalID: -479708470
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Animated Lazer-Sheet_32
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 44
+        width: 128
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63fcefbb4e2020f40b98948251f1d057
+      internalID: 117693871
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Animated Lazer-Sheet_33
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 13
+        width: 128
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f1d2f7c7e9dfd78429d9166291a77223
+      internalID: 866003046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -106,7 +833,41 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Animated Lazer-Sheet_0: -324278
+      Animated Lazer-Sheet_1: 1942436464
+      Animated Lazer-Sheet_10: -283421875
+      Animated Lazer-Sheet_11: -2053725984
+      Animated Lazer-Sheet_12: 1695515624
+      Animated Lazer-Sheet_13: 156770526
+      Animated Lazer-Sheet_14: 1433097021
+      Animated Lazer-Sheet_15: -1794032401
+      Animated Lazer-Sheet_16: -1500551780
+      Animated Lazer-Sheet_17: 1208231020
+      Animated Lazer-Sheet_18: 492707267
+      Animated Lazer-Sheet_19: 1977021117
+      Animated Lazer-Sheet_2: 1311986810
+      Animated Lazer-Sheet_20: 1965787238
+      Animated Lazer-Sheet_21: 185422648
+      Animated Lazer-Sheet_22: -1016684780
+      Animated Lazer-Sheet_23: 157092313
+      Animated Lazer-Sheet_24: -310627212
+      Animated Lazer-Sheet_25: -787300748
+      Animated Lazer-Sheet_26: -1290064694
+      Animated Lazer-Sheet_27: 320956313
+      Animated Lazer-Sheet_28: 486222326
+      Animated Lazer-Sheet_29: 1785565353
+      Animated Lazer-Sheet_3: 156210974
+      Animated Lazer-Sheet_30: -1218069930
+      Animated Lazer-Sheet_31: -479708470
+      Animated Lazer-Sheet_32: 117693871
+      Animated Lazer-Sheet_33: 866003046
+      Animated Lazer-Sheet_4: -1492806290
+      Animated Lazer-Sheet_5: 1165175504
+      Animated Lazer-Sheet_6: -1799625341
+      Animated Lazer-Sheet_7: -460292460
+      Animated Lazer-Sheet_8: 2109429826
+      Animated Lazer-Sheet_9: 744400350
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
