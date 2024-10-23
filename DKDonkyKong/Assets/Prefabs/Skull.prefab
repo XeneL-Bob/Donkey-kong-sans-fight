@@ -143,8 +143,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f3e3cac68b49d445b5f2467b2229871, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  laserPrefab: {fileID: 5278917247233109691, guid: c5b792a23d71868438aa21a6142705ac, type: 3}
   player: {fileID: 0}
+  laserPrefab: {fileID: 5278917247233109691, guid: c5b792a23d71868438aa21a6142705ac, type: 3}
   totalSpinDuration: 2
   slowdownDuration: 1
   laserFireDelay: 0.5

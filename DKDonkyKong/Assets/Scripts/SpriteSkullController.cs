@@ -3,73 +3,79 @@ using UnityEngine;
 
 public class SpriteSkullController : MonoBehaviour
 {
-    public GameObject laserPrefab;      // Prefab for the laser
-    public Transform player;            // Player transform
-    public float totalSpinDuration = 2; // Total time to spin
-    public float slowdownDuration = 1;  // Slowdown duration at the end
-    public float laserFireDelay = 0.5f; // Delay before firing the laser
+    public Transform player; // This will store the player's Transform
+    public GameObject laserPrefab;
+    public float totalSpinDuration = 2f;
+    public float slowdownDuration = 1f;
+    public float laserFireDelay = 0.5f;
 
-    private bool isFiringLaser = false;
+    private bool laserFired = false;
 
-    private void Start()
+    void Start()
     {
-        // Ensure player is assigned
+        // If the player is not assigned in the Inspector, find it by tag
         if (player == null)
         {
-            player = GameObject.FindWithTag("Player").transform;  // Find the player using its tag
+            GameObject playerObject = GameObject.FindWithTag("Player");
+            if (playerObject != null)
+            {
+                player = playerObject.transform;
+            }
+            else
+            {
+                Debug.LogError("Player not found! Make sure the player object is tagged as 'Player'.");
+            }
         }
 
-        StartCoroutine(SpinAndFireLaser());
+        StartCoroutine(SpinAndFire());
     }
 
-    IEnumerator SpinAndFireLaser()
+    IEnumerator SpinAndFire()
     {
-        // Spin for the total spin duration
-        float spinTime = 0;
-        while (spinTime < totalSpinDuration)
+        // Rotate the skull 360 degrees twice
+        float timeElapsed = 0f;
+        float rotationSpeed = 720f / totalSpinDuration; // Two 360-degree spins
+
+        while (timeElapsed < totalSpinDuration)
         {
-            transform.Rotate(0, 0, 360 * Time.deltaTime);  // Spinning
-            spinTime += Time.deltaTime;
+            transform.Rotate(Vector3.forward, rotationSpeed * Time.deltaTime);
+            timeElapsed += Time.deltaTime;
             yield return null;
         }
 
-        // Slow down the spin before stopping
-        float slowdownTime = 0;
-        while (slowdownTime < slowdownDuration)
+        // Slow down the rotation
+        timeElapsed = 0f;
+        while (timeElapsed < slowdownDuration)
         {
-            transform.Rotate(0, 0, 360 * (1 - (slowdownTime / slowdownDuration)) * Time.deltaTime);  // Slowing down
-            slowdownTime += Time.deltaTime;
+            float speed = Mathf.Lerp(rotationSpeed, 0, timeElapsed / slowdownDuration);
+            transform.Rotate(Vector3.forward, speed * Time.deltaTime);
+            timeElapsed += Time.deltaTime;
             yield return null;
         }
 
-        // Align the skull to face the player
-        Vector3 direction = player.position - transform.position;
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle - 90));
+        // Lock the skull's bottom towards the player
+        if (player != null)
+        {
+            Vector2 direction = (player.position - transform.position).normalized;
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90f;
+            transform.rotation = Quaternion.Euler(0, 0, angle);
+        }
 
-        // Wait for the delay before firing the laser
+        // Fire the laser after the delay
         yield return new WaitForSeconds(laserFireDelay);
-
-        // Fire the laser
         FireLaser();
     }
 
-    private void FireLaser()
+    void FireLaser()
     {
-        // Instantiate the laser at the skull's position
-        GameObject laser = Instantiate(laserPrefab, transform.position, Quaternion.identity);
+        if (!laserFired && laserPrefab != null)
+        {
+            // Instantiate the laser and point it towards the player
+            GameObject laserInstance = Instantiate(laserPrefab, transform.position, transform.rotation);
 
-        // Align the laser to point at the player
-        Vector3 direction = player.position - transform.position;
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        laser.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle - 90)); // Rotating laser to align
+            Debug.Log("Laser fired at player!");
 
-        // Adjust the Z position to make sure it's aligned with the game objects
-        laser.transform.position = new Vector3(laser.transform.position.x, laser.transform.position.y, 0);
-
-        // Adjust scale if necessary
-        laser.transform.localScale = new Vector3(1, 1, 1);  // Reset scale to make sure it's correct
-
-        // You can add any additional logic here, such as adding force or a visual warning for the player
+            laserFired = true;
+        }
     }
 }
