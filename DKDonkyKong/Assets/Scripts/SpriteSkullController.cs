@@ -1,19 +1,20 @@
-using System.Collections;
 using UnityEngine;
+using System.Collections;
 
 public class SpriteSkullController : MonoBehaviour
 {
-    public Transform player; // This will store the player's Transform
-    public GameObject laserPrefab;
-    public float totalSpinDuration = 2f;
-    public float slowdownDuration = 1f;
-    public float laserFireDelay = 0.5f;
+    public Transform player;                 // Player's Transform
+    public GameObject laserPrefab;           // Laser Prefab
+    public float totalSpinDuration = 2f;     // Duration of the total spin
+    public float slowdownDuration = 1f;      // Duration of slow down after spin
+    public float laserFireDelay = 0.5f;      // Delay before firing the laser
 
-    private bool laserFired = false;
+    private Transform skullTransform;        // Skull's Transform
+    private bool isMovingToPosition = true;  // Indicates if the skull is moving to its position
 
     void Start()
     {
-        // If the player is not assigned in the Inspector, find it by tag
+        // Find player if not assigned in the inspector
         if (player == null)
         {
             GameObject playerObject = GameObject.FindWithTag("Player");
@@ -27,55 +28,127 @@ public class SpriteSkullController : MonoBehaviour
             }
         }
 
-        StartCoroutine(SpinAndFire());
+        skullTransform = this.transform; // Store the skull's transform
+
+        // Start the coroutine to handle movement, spinning, and laser firing
+        StartCoroutine(MoveToPositionAndSpin());
     }
 
-    IEnumerator SpinAndFire()
+    private IEnumerator MoveToPositionAndSpin()
     {
-        // Rotate the skull 360 degrees twice
-        float timeElapsed = 0f;
-        float rotationSpeed = 720f / totalSpinDuration; // Two 360-degree spins
+        // Start at a random off-screen position (left or right side)
+        Vector3 offScreenStartPosition = GetRandomOffScreenPosition();
+        skullTransform.position = offScreenStartPosition;
 
-        while (timeElapsed < totalSpinDuration)
+        // Choose a random target position on the sides (left or right)
+        Vector3 targetPosition = GetRandomTargetPositionOnSides();
+
+        // Move to the target position
+        while (isMovingToPosition)
         {
-            transform.Rotate(Vector3.forward, rotationSpeed * Time.deltaTime);
-            timeElapsed += Time.deltaTime;
+            skullTransform.position = Vector3.MoveTowards(skullTransform.position, targetPosition, 3f * Time.deltaTime);
+
+            if (Vector3.Distance(skullTransform.position, targetPosition) < 0.01f)
+            {
+                isMovingToPosition = false; // Stop when close enough to the target position
+            }
+
             yield return null;
         }
 
-        // Slow down the rotation
-        timeElapsed = 0f;
-        while (timeElapsed < slowdownDuration)
+        // Start spinning after reaching the position
+        yield return StartCoroutine(SpinAndFire());
+    }
+
+    private Vector3 GetRandomOffScreenPosition()
+    {
+        // Randomly choose an off-screen position on the left or right side of the screen
+        float screenWidth = Camera.main.orthographicSize * Camera.main.aspect;
+        float screenHeight = Camera.main.orthographicSize;
+
+        bool spawnOnLeftSide = Random.value > 0.5f; // Randomly decide if it spawns on the left or right
+
+        // Off-screen positions (left or right side, slightly off the screen bounds)
+        if (spawnOnLeftSide)
         {
-            float speed = Mathf.Lerp(rotationSpeed, 0, timeElapsed / slowdownDuration);
-            transform.Rotate(Vector3.forward, speed * Time.deltaTime);
-            timeElapsed += Time.deltaTime;
+            return new Vector3(-screenWidth - 2f, Random.Range(-screenHeight, screenHeight), 0f); // Left off-screen
+        }
+        else
+        {
+            return new Vector3(screenWidth + 2f, Random.Range(-screenHeight, screenHeight), 0f); // Right off-screen
+        }
+    }
+
+    private Vector3 GetRandomTargetPositionOnSides()
+    {
+        // Calculate screen boundaries based on the camera
+        float screenWidth = Camera.main.orthographicSize * Camera.main.aspect;
+        float screenHeight = Camera.main.orthographicSize;
+
+        // Limit how far to the sides the skull can go (closer to center)
+        float horizontalOffset = screenWidth * 0.5f; // Adjust this multiplier for how far toward the sides it should go (lower = closer to center)
+        float verticalRange = screenHeight * 0.8f; // Keep the vertical movement within screen bounds
+
+        // Randomly select either the left or right side of the screen for the skull to move toward
+        bool moveToLeftSide = Random.value > 0.5f;
+
+        // Return a position on the left or right side, closer to the center
+        if (moveToLeftSide)
+        {
+            return new Vector3(-horizontalOffset, Random.Range(-verticalRange, verticalRange), 0f); // Left side, closer to center
+        }
+        else
+        {
+            return new Vector3(horizontalOffset, Random.Range(-verticalRange, verticalRange), 0f); // Right side, closer to center
+        }
+    }
+
+    private IEnumerator SpinAndFire()
+    {
+        // Simulate the skull spinning
+        float spinTime = 0f;
+        while (spinTime < totalSpinDuration)
+        {
+            spinTime += Time.deltaTime;
+            skullTransform.Rotate(0, 0, 360 * Time.deltaTime); // Full spin
             yield return null;
         }
 
-        // Lock the skull's bottom towards the player
-        if (player != null)
+        // Slow down the spin after the initial fast spin
+        float slowdownTime = 0f;
+        while (slowdownTime < slowdownDuration)
         {
-            Vector2 direction = (player.position - transform.position).normalized;
-            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90f;
-            transform.rotation = Quaternion.Euler(0, 0, angle);
+            slowdownTime += Time.deltaTime;
+            skullTransform.Rotate(0, 0, 90 * Time.deltaTime); // Slow spin
+            yield return null;
         }
 
-        // Fire the laser after the delay
+        // Face the player before firing the laser
+        FacePlayer();
+
+        // Fire the laser after the spin and delay
         yield return new WaitForSeconds(laserFireDelay);
         FireLaser();
     }
 
-    void FireLaser()
+    private void FacePlayer()
     {
-        if (!laserFired && laserPrefab != null)
-        {
-            // Instantiate the laser and point it towards the player
-            GameObject laserInstance = Instantiate(laserPrefab, transform.position, transform.rotation);
+        // Calculate the direction from the skull to the player
+        Vector3 directionToPlayer = player.position - skullTransform.position;
+        float angle = Mathf.Atan2(directionToPlayer.y, directionToPlayer.x) * Mathf.Rad2Deg;
 
-            Debug.Log("Laser fired at player!");
+        // Rotate the skull to face the player (teeth face down toward player)
+        skullTransform.rotation = Quaternion.Euler(0f, 0f, angle + 90f); // Adjusted for the teeth direction
+    }
 
-            laserFired = true;
-        }
+    private void FireLaser()
+    {
+        // Calculate the spawn position based on the bottom (teeth) of the skull
+        Vector3 laserStartPosition = skullTransform.position + skullTransform.up * -1f; // Adjusted to spawn from the "teeth"
+
+        // Instantiate the laser prefab at the calculated position
+        GameObject laser = Instantiate(laserPrefab, laserStartPosition, skullTransform.rotation); // Make the laser follow the skull's rotation
+
+        Debug.Log("Laser fired toward player!");
     }
 }
