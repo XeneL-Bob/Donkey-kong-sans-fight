@@ -3,10 +3,10 @@ using System.Collections;
 
 public class Laser : MonoBehaviour
 {
-    public float warningDuration = 2f; // Duration of the warning phase before the laser becomes active
-    public float activeDuration = 2f; // How long the laser remains active
-    private bool isActive = false; // Determines whether the laser can damage the player
-    private Collider2D laserCollider; // Collider for detecting collisions with the player
+    public float warningDuration = 2f;  // Duration of the warning phase before the laser becomes active
+    public float activeDuration = 2f;   // How long the laser remains active
+    private bool isActive = false;      // Determines whether the laser can damage the player
+    private Collider2D laserCollider;   // Collider for detecting collisions with the player
 
     void Start()
     {
@@ -39,17 +39,12 @@ public class Laser : MonoBehaviour
         // Check if the laser hits the player and is active
         if (collision.gameObject.CompareTag("Player") && isActive)
         {
-            // If the laser is active and hits the player, restart the level
-            Debug.Log("Laser hit the player!");
-
-            // Call a function to restart the current level
-            RestartLevel();
+            // Ensure that the player script handles death sound and animation
+            Player player = collision.gameObject.GetComponent<Player>();
+            if (player != null)
+            {
+                player.TriggerDeathSequence(); // Trigger the player's death sequence
+            }
         }
-    }
-
-    void RestartLevel()
-    {
-        // Reload the current active scene to restart the level
-        UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
     }
 }
