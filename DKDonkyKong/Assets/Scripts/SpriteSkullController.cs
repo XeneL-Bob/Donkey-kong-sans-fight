@@ -8,6 +8,7 @@ public class SpriteSkullController : MonoBehaviour
     public float totalSpinDuration = 2f;     // Duration of the total spin
     public float slowdownDuration = 1f;      // Duration of slow down after spin
     public float laserFireDelay = 0.5f;      // Delay before firing the laser
+    public float laserDuration = 2f;         // Duration for how long the laser stays visible
 
     private Transform skullTransform;        // Skull's Transform
     private bool isMovingToPosition = true;  // Indicates if the skull is moving to its position
@@ -36,12 +37,11 @@ public class SpriteSkullController : MonoBehaviour
 
     private IEnumerator MoveToPositionAndSpin()
     {
-        // Start at a random off-screen position (left or right side)
-        Vector3 offScreenStartPosition = GetRandomOffScreenPosition();
-        skullTransform.position = offScreenStartPosition;
-
-        // Choose a random target position on the sides (left or right)
+        // Start at a random off-screen position on the correct side (left or right) based on target position
         Vector3 targetPosition = GetRandomTargetPositionOnSides();
+        Vector3 offScreenStartPosition = GetOffScreenStartPosition(targetPosition);
+
+        skullTransform.position = offScreenStartPosition;
 
         // Move to the target position
         while (isMovingToPosition)
@@ -60,22 +60,20 @@ public class SpriteSkullController : MonoBehaviour
         yield return StartCoroutine(SpinAndFire());
     }
 
-    private Vector3 GetRandomOffScreenPosition()
+    private Vector3 GetOffScreenStartPosition(Vector3 targetPosition)
     {
-        // Randomly choose an off-screen position on the left or right side of the screen
+        // Randomly decide to spawn off-camera on the side relative to the target position
         float screenWidth = Camera.main.orthographicSize * Camera.main.aspect;
         float screenHeight = Camera.main.orthographicSize;
 
-        bool spawnOnLeftSide = Random.value > 0.5f; // Randomly decide if it spawns on the left or right
-
-        // Off-screen positions (left or right side, slightly off the screen bounds)
-        if (spawnOnLeftSide)
+        // If the target is on the right, spawn off-screen to the right. If on the left, spawn off-screen to the left.
+        if (targetPosition.x > 0) // Right side
         {
-            return new Vector3(-screenWidth - 2f, Random.Range(-screenHeight, screenHeight), 0f); // Left off-screen
+            return new Vector3(screenWidth + 2f, targetPosition.y, 0f); // Off-screen to the right
         }
-        else
+        else // Left side
         {
-            return new Vector3(screenWidth + 2f, Random.Range(-screenHeight, screenHeight), 0f); // Right off-screen
+            return new Vector3(-screenWidth - 2f, targetPosition.y, 0f); // Off-screen to the left
         }
     }
 
@@ -129,6 +127,10 @@ public class SpriteSkullController : MonoBehaviour
         // Fire the laser after the spin and delay
         yield return new WaitForSeconds(laserFireDelay);
         FireLaser();
+
+        // Wait for the laser duration, then destroy the skull
+        yield return new WaitForSeconds(laserDuration);
+        DestroySkull();
     }
 
     private void FacePlayer()
@@ -143,12 +145,25 @@ public class SpriteSkullController : MonoBehaviour
 
     private void FireLaser()
     {
-        // Calculate the spawn position based on the bottom (teeth) of the skull
-        Vector3 laserStartPosition = skullTransform.position + skullTransform.up * -1f; // Adjusted to spawn from the "teeth"
+        // Get the bounds of the skull to calculate the bottom position accurately
+        float skullHeight = skullTransform.GetComponent<SpriteRenderer>().bounds.size.y;
 
-        // Instantiate the laser prefab at the calculated position
-        GameObject laser = Instantiate(laserPrefab, laserStartPosition, skullTransform.rotation); // Make the laser follow the skull's rotation
+        // Adjust the laser's start position to be further down, below the skull's bottom
+        Vector3 laserStartPosition = skullTransform.position - skullTransform.up * (skullHeight * 2.9f);
 
-        Debug.Log("Laser fired toward player!");
+        // Create the rotation for the laser with the extra 90-degree adjustment to align the short side
+        Quaternion laserRotation = skullTransform.rotation * Quaternion.Euler(0f, 0f, 90f);
+
+        // Instantiate the laser prefab at the bottom of the skull, with the adjusted position and rotation
+        GameObject laser = Instantiate(laserPrefab, laserStartPosition, laserRotation);
+
+        Debug.Log("Laser fired from the bottom of the skull, fully beneath the skull.");
+    }
+
+    private void DestroySkull()
+    {
+        // Destroy the skull GameObject to clean up after firing the laser
+        Destroy(gameObject);
+        Debug.Log("Skull destroyed to reduce clutter.");
     }
 }
