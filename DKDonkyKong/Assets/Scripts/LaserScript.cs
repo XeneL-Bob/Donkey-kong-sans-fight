@@ -37,10 +37,10 @@ public class Laser : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collision)
     {
         // Check if the laser hits the player and is active
-        if (collision.gameObject.CompareTag("Player") && isActive)
+        if (collision.CompareTag("Player") && isActive)
         {
             // Ensure that the player script handles death sound and animation
-            Player player = collision.gameObject.GetComponent<Player>();
+            Player player = collision.GetComponent<Player>();
             if (player != null)
             {
                 player.TriggerDeathSequence(); // Trigger the player's death sequence

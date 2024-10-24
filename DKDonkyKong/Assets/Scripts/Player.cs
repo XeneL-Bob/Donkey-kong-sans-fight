@@ -23,8 +23,8 @@ public class Player : MonoBehaviour
 
     // Reference to the death prefab and sound
     public GameObject deathPrefab;
-    public AudioClip deathSound;
-    private AudioSource audioSource;
+    public AudioClip deathSound;  // AudioClip for the death sound
+    private AudioSource audioSource; // AudioSource component for playback
 
     // Delay before resetting level
     public float deathAnimationDuration = 1.5f; // Adjust the duration as needed
@@ -34,7 +34,7 @@ public class Player : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
         capsuleCollider = GetComponent<CapsuleCollider2D>();
-        audioSource = GetComponent<AudioSource>();  // Make sure AudioSource is attached
+        audioSource = GetComponent<AudioSource>();  // Ensure AudioSource is attached
     }
 
     private void OnEnable()
@@ -157,8 +157,7 @@ public class Player : MonoBehaviour
         if (audioSource != null && deathSound != null)
         {
             Debug.Log("Playing death sound");
-            audioSource.volume = 1.0f; // Ensure full volume
-            audioSource.PlayOneShot(deathSound, 1.0f); // Increase the volume if necessary
+            audioSource.PlayOneShot(deathSound); // Play sound once
         }
 
         // Instantiate the death prefab at the player's position
@@ -173,7 +172,7 @@ public class Player : MonoBehaviour
 
     private IEnumerator DelayBeforeReset()
     {
-        // Wait for the duration of the death animation and sound to play
+        // Wait for the duration of the death animation
         yield return new WaitForSeconds(deathAnimationDuration);
 
         // Reset the level or call the GameManager to handle it
