@@ -166,4 +166,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   warningDuration: 2
-  activeDuration: 2
+  activeDuration: 0.5
